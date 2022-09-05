@@ -12,7 +12,7 @@ contract structure{
 
     User public user1;
     User[] public users;
-
+    mapping(address=>User) public UserMappingUsingAddress;
     function addData() public{
         user1.name="Priyambi";
         user1.email="priyambi.hiran@gmail.com";
@@ -34,5 +34,9 @@ contract structure{
         users[_index].email=_email;
         users[_index].age=_age;
         users[_index].verified=true;
+    }
+    function createUserMapping(string memory _name,string memory _email, uint _age,bool _verified) public{
+        User memory temp=User(_name,_email,_age,_verified);
+        UserMappingUsingAddress[msg.sender]=temp;
     }
 }
