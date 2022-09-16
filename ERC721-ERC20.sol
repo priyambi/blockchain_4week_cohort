@@ -37,7 +37,6 @@ contract my721Token is ERC721, Ownable {
     function withdrawTokens() public payable onlyOwner {
         require(NFTsMinted == 5, "Mint all the NFT's");
         for (uint i = 1; i <= NFTsMinted; i++) {
-            console.log(NFT_Owners[i]);
             dummy(ERC20contractAddress).transfer(NFT_Owners[i] , 10);
           
         }
